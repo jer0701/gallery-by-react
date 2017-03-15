@@ -7,15 +7,15 @@ import ReactDOM from 'react-dom';
 let imageDatas = require('json!../data/imageData.json'); //如果不加json！，forEach使用不了
 
 //定义一个函数遍历图片文件名，自执行来把文件信息转化成URL路径信息
-function genImageURL(imageDatasArr) {
+
+imageDatas = (function genImageURL(imageDatasArr) {
     for (var i = 0, j = imageDatasArr.length; i < j; i++) {
         var singleImageData = imageDatasArr[i];
         singleImageData.imageURL = require('../images/' + singleImageData.fileName);
         imageDatasArr[i] = singleImageData;
     }
     return imageDatasArr;
-}
-imageDatas = genImageURL(imageDatas);
+})(imageDatas);
 
 /*
  * 获取取范围内一个随机数
@@ -28,7 +28,7 @@ function getRangeRandom(low, high) {
  * 获取0~30° 之间的一个任意正负值
  */
 function get30DegRandom() {
-    return (Math.random() > 0.5 ? "" : "-") + Math.ceil(Math.random() * 30);
+    return (Math.random() > 0.5 ? "+" : "-") + Math.ceil(Math.random() * 30);
 }
 
 var ImgFigure = React.createClass({
@@ -58,10 +58,9 @@ var ImgFigure = React.createClass({
 
         //如果图片的旋转角度有值，添加旋转角度
         if (this.props.arrange.rotate) {
-            var rotate = this.props.arrange.rotate;
-            (['MozTransform', 'msTransform', 'WebkitTransform', 'transform']).forEach((value) => {
-              styleObj[value] = 'rotate(' + rotate + 'deg)';
-            });
+            (['MozTransform', 'msTransform', 'WebkitTransform', 'transform']).forEach(function (value) {
+                styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)';
+            }.bind(this));
         }
 
         if (this.props.arrange.isCenter) {
@@ -262,7 +261,7 @@ var AppComponent = React.createClass({
 
         this.Constant.vPosRange.topY[0] = -harfImgH;
         this.Constant.vPosRange.topY[1] = harfStageH - harfImgH * 3;
-        this.Constant.vPosRange.x[0] = harfStageW - harfImgW;
+        this.Constant.vPosRange.x[0] = harfStageW - imgW;
         this.Constant.vPosRange.x[1] = harfStageW;
 
         this.realrange(0);
@@ -286,7 +285,7 @@ var AppComponent = React.createClass({
                 isCenter: false
             }
         }
-        imgFigures.push(<ImgFigure data={value} ref={"imgFigure" + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+        imgFigures.push(<ImgFigure key={index} data={value} ref={"imgFigure" + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
     }.bind(this));
 
     return (
