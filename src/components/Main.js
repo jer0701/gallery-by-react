@@ -4,7 +4,7 @@ require('styles/App.css');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let imageDatas = require('json!../data/imageData.json'); //如果不加json！，forEach使用不了
+let imageDatas = require('../data/imageData.json'); //如果不加json！，forEach使用不了,需要json loader
 
 //定义一个函数遍历图片文件名，自执行来把文件信息转化成URL路径信息
 
