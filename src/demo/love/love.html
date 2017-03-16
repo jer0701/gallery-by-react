@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Love</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"Microsoft";color:#666;}
+
+		/*love start*/
+		#love{width:100px;height:100px;margin:300px auto;position:relative;}
+		#love .l_in{width:100px;height:100px;z-index:1;position:absolute;}
+		#love .l_in .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+		#love .l_in .left{left:7px;}
+		#love .l_in .right{left:43px;}
+		#love .l_in .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+		#love .l_in a{width:100px;height:100px;position:absolute;z-index:2;text-align:center;line-height:70px;text-decoration:none;color:#9D9C9C;}
+
+		#love .l_out{width:100px;height:100px;z-index:-1;position:absolute;animation:animationHeart 1s infinite ease-in-out;}
+		#love .l_out .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+		#love .l_out .left{left:7px;}
+		#love .l_out .right{left:43px;}
+		#love .l_out .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+		@keyframes animationHeart {0% {transform:scale(1);opacity:1} 100% {transform:scale(1.5);opacity:0}}
+
+		#love .l_shadow{width:100px;height:100px;z-index:-1;position:absolute;animation:animationHeart2 1s 1 ease-in-out;}
+		#love .l_shadow .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+		#love .l_shadow .left{left:7px;}
+		#love .l_shadow .right{left:43px;}
+		#love .l_shadow .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+		@keyframes animationHeart2 {0% {transform:scale(1);opacity:1} 100% {transform:scale(6);opacity:0}}
+		/*end love*/
+	</style>
+</head>
+<body>
+	<!--love start-->
+	<div id="love">
+		<div class="l_in">
+			<span class="heart left"></span>
+			<span class="heart right"></span>
+			<span class="bottom"></span>
+			<a class="btn" href="javascript:;">点我</a>
+		</div>
+		<div class="l_out">
+			<span class="heart left"></span>
+			<span class="heart right"></span>
+			<span class="bottom"></span>
+		</div>
+	</div>
+	<!--end love-->
+
+	<script type="text/javascript">
+		var btn = document.querySelector(".btn"); //找到第一个类名为btn的
+
+		if (btn) {
+			btn.onclick = function() {
+				var ranColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
+				var parDom = this.parentElement;
+				var dom = document.createElement("div");
+
+				if (dom) {
+					dom.className = "l_shadow";
+					dom.innerHTML = "<span class='heart left'></span>" +
+									"<span class='heart right'></span>"+
+			 						"<span class='bottom'></span>";
+			 		parDom.appendChild(dom);
+
+			 		var spanDom = dom.querySelectorAll("span"); //找到l_shadow下所有span标签
+			 		var len = spanDom.length;
+			 		for (var i=0; i < len; i++) {
+			 			spanDom[i].style.background = ranColor;
+			 		}
+
+			 		setTimeout(function () {
+			 			parDom.removeChild(dom);
+			 		}, 1000);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

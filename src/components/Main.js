@@ -44,8 +44,8 @@ var ImgFigure = React.createClass({
             this.props.center();
         }
 
-        e.stopPropagation();
-        e.preventDefault(); //阻止事件冒泡
+        e.stopPropagation();  //阻止事件冒泡
+        e.preventDefault();   //阻止事件的默认行为
     },
 
     render: function () {
@@ -117,6 +117,33 @@ var AppComponent = React.createClass({
             this.setState({
                 imgsArrangeArr: imgsArrangeArr
             });
+            if (imgsArrangeArr[index].isInverse) {
+                var url = null;
+                switch(index) {
+                    case 0:
+                        url = './../demo/lazy_loading/lazy_loading.html';
+                        break;
+                    case 1:
+                        url = './../demo/message_board/message_board.html';
+                        break;
+                    case 2:
+                        url = './../demo/love/love.html';
+                        break;
+                    case 3:
+                        url = './../demo/banner/banner.html';
+                        break;
+                    case 4:
+                        url = './../demo/calculator/calculator.html';
+                        break;
+                    case 5:
+                        url = './../demo/ball/ball.html';
+                        break;
+                }
+                if (url) {
+                    const w = window.open('about:blank');
+                    w.location.href = url;
+                }
+            }
         }.bind(this);
     },
 

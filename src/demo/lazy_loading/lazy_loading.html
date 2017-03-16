@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LazyLoading</title>
+
+	<style type="text/css">
+		*{maring:0;padding:0;}
+
+		/* box start */
+		#box{width:930px;margin:10px auto;}
+		#box li{list-style:none;float:left;margin-right:10px;margin-bottom:20px;box-shadow:1px 1px 10px #222;}
+		#box li img{width:300px;height:200px;}
+		/* end box */
+	</style>
+</head>
+<body>
+	<!--box start-->
+	<div id="box">
+		<ul>
+			<li><img src="images/loading.gif" data-src="images/1.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/2.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/3.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/4.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/5.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/6.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/1.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/2.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/3.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/4.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/5.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/6.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/1.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/2.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/3.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/4.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/5.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/6.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/1.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/2.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/3.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/4.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/5.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/6.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/1.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/2.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/3.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/4.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/5.jpg"></li>
+			<li><img src="images/loading.gif" data-src="images/6.jpg"></li>
+		</ul>
+	</div>
+	<!--end box-->
+
+	<script type="text/javascript">
+		window.onload = function() {
+			var imgDoms = document.getElementsByTagName("img"),
+			    bodyDom = document.body;
+			    htmlDom = document.documentElement;
+
+			showImage(); //确保没滚动时也显示图片
+
+			function showImage() {
+				var scrollTop = bodyDom.scrollTop || htmlDom.scrollTop, //获取滚动条滚动的高度
+					clientHeight = window.innerHeight || bodyDom.clientHeight,
+					topHeight = scrollTop + clientHeight;
+					len = imgDoms.length;
+				
+				for (var i=0; i < len; i++) {
+					if (!imgDoms[i].load && getTop(imgDoms[i]) < topHeight) {
+						//imgDoms[i].src = "images/" + (i+1) + ".jpg";
+						imgDoms[i].src = imgDoms[i].getAttribute("data-src");
+						imgDoms[i].load = true;
+					}
+				}
+			}
+
+			//imgDoms[i]到顶部的距离
+			function getTop(obj) {
+				var top = 0;
+				while(obj){
+					top += obj.offsetTop; //距离上方控件的距离
+					obj = obj.offsetParent;
+				}
+				//alert(top);
+
+				return top;
+			}
+
+			window.onscroll = showImage; //滚动时加载
+		}
+	</script>
+</body>
+</html>

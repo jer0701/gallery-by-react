@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SimpleCalculator</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"Microsoft";}
+		/*container start*/
+		#container{width:300px;margin:100px auto;background:#fff;border-radius:15px;box-shadow:1px 1px 5px#000;overflow:hidden;}
+		#container .c_screen{height:50px;background:#C6C6AD;margin:20px 15px;text-align:right;line-height:50px;font-size:26px;color:#fff;border-radius:5px;box-shadow:-1px -1px 5px #000;overflow:hidden;}
+		#container .c_btns{position:relative;overflow:hidden;}
+		#container .c_btns ul{padding-left:15px;}
+		#container .c_btns ul li{list-style:none;display:inline-block;width:58px;height:43px;background:#E8E3E0;float:left;margin-right:10px;margin-bottom:10px;text-align:center;line-height:45px;font-size:22px;color:#B2A1A1;cursor:pointer;border:1px solid #E8E3E0;border-radius:5px;box-shadow:1px 1px 5px #000;}
+		#container .c_btns ul li.eq{height:100px;line-height:100px;}
+		#container .c_btns ul .lastLine{position:absolute;bottom:0px;left:0px;}
+		#container .c_btns ul li:active{border:1px solid #B2A1A1;}
+		/*end container*/
+	</style>
+</head>
+<body>
+	<!--container start-->
+	<div id="container">
+		<div class="c_screen">0</div>
+		<div class="c_btns">
+			<ul>
+				<li>C</li>
+				<li>⬅️</li>
+				<li>/</li>
+				<li>*</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>+</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>-</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li class="eq">=</li>
+				<ul class="lastLine">
+					<li>0</li>
+					<li>00</li>
+					<li>.</li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+	<!--end container-->
+
+	<script type="text/javascript">
+		var liArr = document.getElementsByTagName("li"); //按钮
+		var screen = document.getElementsByClassName("c_screen")[0]; //屏幕显示
+		var showResult;
+		var showResultArray;
+		var mathOperator = ["+", "-", "*", "/"];
+		var num = "00123456789";
+		var clear = false; //是否继续做运算
+		var point = 0;
+
+		for (i in liArr) {
+			//C
+			if (liArr[i].innerHTML == "C") {
+				liArr[i].onclick = function() {
+					screen.innerHTML = "0";
+				}
+			}
+
+			//⬅️
+			if (liArr[i].innerHTML == "⬅️") {
+				liArr[i].onclick = function() {
+					if (screen.innerHTML) {
+						showResultArray = screen.innerHTML.split("");
+						showResultArray.pop();
+						screen.innerHTML = showResultArray.join("");
+					}
+				}
+			}
+
+			//.
+			if (liArr[i].innerHTML == ".") {
+				liArr[i].onclick = function() {
+					showResultArray = screen.innerHTML.split("");
+					var length = showResultArray.length;
+					//判断最后一个是不是加减乘除符号
+					var isOperator = mathOperator.join("").indexOf(showResultArray[length-1]) == -1 ? false : true;
+					if (isOperator) {
+						screen.innerHTML += "0."; //补零
+						point++ ;
+					} else if (!point) { //只能有一个小数点
+						screen.innerHTML += ".";
+						point++;
+					}
+				}
+			}
+
+			//数字
+			if (num.indexOf(liArr[i].innerHTML) != -1) {
+				liArr[i].onclick = function() {
+					if(screen.innerHTML == "0" || clear) {
+						screen.innerHTML = "";
+						clear = false;
+					}
+					screen.innerHTML += this.innerHTML;
+				}
+			} 
+
+			//+ - * /
+			for (j in mathOperator) {
+				if (liArr[i].innerHTML == mathOperator[j]) {
+					liArr[i].onclick = function() {
+						showResult = screen.innerHTML;
+						showResultArray = screen.innerHTML.split("");
+						var length = showResultArray.length;
+						if (showResultArray[0]) {
+							if (mathOperator.join("").indexOf(showResultArray[length-1]) != -1) {
+								showResultArray[length-1] = this.innerHTML;
+								showResult = showResultArray.join("");
+							} else {
+								showResult += this.innerHTML;
+							}
+							screen.innerHTML = showResult;
+							clear = false;
+							point = 0;
+						}
+					}
+				}
+			}
+
+			//=
+			if (liArr[i].innerHTML == "=") {
+				liArr[i].onclick = function() {
+					screen.innerHTML = eval (screen.innerHTML);
+					clear = true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
