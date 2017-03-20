@@ -1,8 +1,6 @@
 html, body {
   width: 100%;
   height: 100%;
-
-  background-color: #222;
 }
 
 .content {
@@ -73,13 +71,21 @@ figcaption {  /*显示图片说明*/
 }
 /*image end*/
 
-/*controller start*/
-.controller-nav {
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  z-index: 101;
-  width: 100%;
-  text-align: center;
+/*example start*/
+.example-enter {
+    opacity: 0;
+    z-index:1000;
 }
-/*controller end*/
+.example-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+}
+.example-leave {
+    opacity: 1;
+    z-index: 0;
+}
+.example-leave-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+/*end example*/
