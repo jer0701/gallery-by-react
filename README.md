@@ -2,7 +2,7 @@
 a photo gallery project based on react
 基于ReactJS构架的图片画廊应用
 
-项目搭建
+## 项目搭建
 
 首先此项目依赖nodejs，所以要先装node的环境,可去nodejs官网自行下载安装.
 
@@ -15,7 +15,7 @@ npm install -g generator-react-webpack
 由于国外镜像，国内有时候下载慢或者下载不了，可以换成国内淘宝镜像。
 
 
-创建项目
+## 创建项目
 
 yo react-webpack gallery-by-react
 
@@ -33,6 +33,6 @@ lint hint: js es检测工具
 
 
 
-项目启动
+## 项目启动
 
 npm start
