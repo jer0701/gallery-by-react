@@ -48,7 +48,7 @@ var SetButton = React.createClass({
             },
 
             render: function() {
-                return (<li onClick={this.handleClick.bind(this)}> {this.state.value} </li>);
+                return (<li onClick={this.handleClick}> {this.state.value} </li>);
             }
 });
 

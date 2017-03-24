@@ -1,0 +1,23 @@
+body{font-size:12px;font-family:"Microsoft";color:#666;}
+
+.love{width:100px;height:100px;margin:300px auto;position:relative;}
+.love .l_in{width:100px;height:100px;z-index:1;position:absolute;}
+.love .l_in .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+.love .l_in .left{left:7px;}
+.love .l_in .right{left:43px;}
+.love .l_in .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+.love .l_in a{width:100px;height:100px;position:absolute;z-index:2;text-align:center;line-height:70px;text-decoration:none;color:#9D9C9C;}
+
+.love .l_out{width:100px;height:100px;z-index:-1;position:absolute;animation:animationHeart 1s infinite ease-in-out;}
+.love .l_out .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+.love .l_out .left{left:7px;}
+.love .l_out .right{left:43px;}
+.love .l_out .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+@keyframes animationHeart {0% {transform:scale(1);opacity:1} 100% {transform:scale(1.5);opacity:0}}
+
+.love .l_shadow{width:100px;height:100px;z-index:-1;position:absolute;animation:animationHeart2 1s 1 ease-in-out;}
+.love .l_shadow .heart{width:50px;height:52px;display:block;background:pink;border-radius:50%;position:absolute;left:0;}
+.love .l_shadow .left{left:7px;}
+.love .l_shadow .right{left:43px;}
+.love .l_shadow .bottom{width:47px;height:47px;display:block;background:pink;position:absolute;top:23px;left:27px;transform:rotate(44deg);}
+@keyframes animationHeart2 {0% {transform:scale(1);opacity:1} 100% {transform:scale(6);opacity:0}}
