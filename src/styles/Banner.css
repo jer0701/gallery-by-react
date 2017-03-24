@@ -1,0 +1,10 @@
+/* box start */
+.box{width:960px;height:600px;margin:50px auto;background:url('./../images/banner/banner.png') no-repeat;position: relative;}
+.box ul {width:706px;height:200px;overflow:hidden;margin-top:200px;margin-left:101px;position:absolute;}
+.box ul li{list-style:none;position:absolute;}
+.box ul li img{width:320px;height:200px;float:left;padding-right:10px;white-space:nowrap;cursor:pointer;display:inline-block;border-radius:5px;box-shadow:3px 3px 10px rgba(0,0,0,0.6);position:absolute;}
+.box .btn{width:50px;height:50px;font-size:50px;line-height:40px;text-align:center;color:#ccc;border-radius:50%;margin-left:22px;position:absolute;top:270px;}
+.box .btn:hover{cursor:pointer;background:rgba(0,0,0,0.5)}
+.box .left{left:0px;}
+.box .right{right:34px;}
+/* end box */

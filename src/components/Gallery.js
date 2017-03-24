@@ -131,7 +131,7 @@ var Gallery = React.createClass({
                         path = "/Love";
                         break;
                     case 3:
-                        path = null;
+                        path = "/Banner";
                         break;
                     case 4:
                         path = "/Calculator";
