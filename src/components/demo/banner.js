@@ -125,7 +125,8 @@ var Imgs = React.createClass({
                             left: temp
                         }
                     }
-                    imgArrs.push(<ImgFigure onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} key={i} data={"./../../images/banner/"+ (i+1) + ".jpg"} styleObj={this.state.imgArray[i]} />);
+                    var imgUrl = require('./../../images/banner/'+ (i+1) + '.jpg');
+                    imgArrs.push(<ImgFigure onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} key={i} data={imgUrl} styleObj={this.state.imgArray[i]} />);
                 }
 
                 return <div className="box">
