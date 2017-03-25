@@ -1,0 +1,6 @@
+body{font-size:12px;color:#ccc;font-family:"Microsoft";}
+.content:{width:100%;height:100%;}
+/*box start*/
+.pack{width:100%;height:100%;background:#333;position:absolute;}
+.pack .ball{width:100px;height:100px;position:absolute;top:0;left:0;background:red;border-radius:50%;text-align:center;line-height:100px;font-size:28px;color:#fff;}
+/*end box*/

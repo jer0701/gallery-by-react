@@ -5,6 +5,7 @@ import Gallery from './components/Gallery'
 import Calculator from './components/demo/Calculator'
 import Love from './components/demo/Love'
 import Banner from './components/demo/Banner'
+import Ball from './components/demo/Ball'
 
 
 const routes = (
@@ -14,6 +15,7 @@ const routes = (
             <Route path='/calculator' component={Calculator} />
             <Route path='/love' component={Love} />
             <Route path='/Banner' component={Banner} />
+            <Route path='/Ball' component={Ball} />
     </Route>
   </Route>
 );
