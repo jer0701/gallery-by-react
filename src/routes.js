@@ -7,6 +7,7 @@ import Love from './components/demo/Love'
 import Banner from './components/demo/Banner'
 import Ball from './components/demo/Ball'
 import LazyLoading from './components/demo/LazyLoading'
+import MessageBoard from './components/demo/MessageBoard'
 
 
 const routes = (
@@ -15,9 +16,10 @@ const routes = (
             <IndexRoute component={Gallery}/>
             <Route path='/calculator' component={Calculator} />
             <Route path='/love' component={Love} />
-            <Route path='/Banner' component={Banner} />
-            <Route path='/Ball' component={Ball} />
-            <Route path='/LazyLoading' component={LazyLoading} />
+            <Route path='/banner' component={Banner} />
+            <Route path='/ball' component={Ball} />
+            <Route path='/lazyloading' component={LazyLoading} />
+            <Route path='/messageboard' component={MessageBoard} />
     </Route>
   </Route>
 );

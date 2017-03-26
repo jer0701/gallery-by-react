@@ -34,7 +34,8 @@ var ImgFigure = React.createClass({
             },
 
             render: function() {
-                var imgsrc = this.state.showImage ? this.props.data : "images/loading.gif"
+                var loadingurl = require('./../../images/lazyloading/loading.gif');
+                var imgsrc = this.state.showImage ? this.props.data : loadingurl ;
                 return <li>
                             <img src={imgsrc} data-src={this.props.data} />
                        </li>

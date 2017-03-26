@@ -122,22 +122,22 @@ var Gallery = React.createClass({
                 var path = null;
                 switch(index) {
                     case 0:
-                        path = "/LazyLoading";
+                        path = "/lazyloading";
                         break;
                     case 1:
-                        path = null;
+                        path = "/messageboard";
                         break;
                     case 2:
-                        path = "/Love";
+                        path = "/love";
                         break;
                     case 3:
-                        path = "/Banner";
+                        path = "/banner";
                         break;
                     case 4:
-                        path = "/Calculator";
+                        path = "/calculator";
                         break;
                     case 5:
-                        path = "/Ball";
+                        path = "/ball";
                         break;
                 }
                 if (path) {
