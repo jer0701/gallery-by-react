@@ -122,7 +122,7 @@ var Gallery = React.createClass({
                 var path = null;
                 switch(index) {
                     case 0:
-                        path = null;
+                        path = "/LazyLoading";
                         break;
                     case 1:
                         path = null;
