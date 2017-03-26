@@ -42,7 +42,7 @@ var ImgFigure = React.createClass({
             }
 });
 
-var Loading = React.createClass({
+var LazyLoading = React.createClass({
             getInitialState: function() {
                 return {
                       viewport: {
@@ -63,6 +63,7 @@ var Loading = React.createClass({
                   }
                 });
             },
+
             componentDidMount: function() {
                 window.addEventListener('scroll', this.updateViewport, false);
                 this.updateViewport();
@@ -75,7 +76,8 @@ var Loading = React.createClass({
             render: function() {
                 var imgArrs = [];
                 for (var i = 0; i < 16; i++) {
-                    imgArrs.push(<ImgFigure key={i} data={"images/"+ (i+1) + ".jpg"} viewport={this.state.viewport}/>);
+                    var imgUrl = require('./../../images/lazyloading/'+ (i+1) + '.jpg');
+                    imgArrs.push(<ImgFigure key={i} data={imgUrl} viewport={this.state.viewport}/>);
                 }
                 return <div className="loadingbox">
                         <ul>
