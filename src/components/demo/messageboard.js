@@ -36,7 +36,8 @@ var ContentEditable = React.createClass({
 var MessageBoardContainer = React.createClass({
             getInitialState: function() {
                 return ({
-                    html: ""
+                    html: "",
+                    count: 0
                 });
             },
             handleChange: function(event){
@@ -58,6 +59,7 @@ var MessageBoardContainer = React.createClass({
 
                 //点击发送按钮
                 $(".t_send").click(function() {
+                    if(this.state.count < 3) {
                     var contant = $(".t_contant").text().trim() != ""? true : false;
                     var img = $(".t_contant").find("img").html() != null ? true : false;
 
@@ -71,10 +73,12 @@ var MessageBoardContainer = React.createClass({
                                 "</div>"
                             );
                             $(".t_contant").text("");
+                            this.setState({count: this.state.count+1});
                     } else {
                         alert("内容不能为空哦，请重新输入");
                         $(".t_contant").focus();
                         return;
+                    }
                     }
                 });
             },
@@ -90,8 +94,8 @@ var MessageBoardContainer = React.createClass({
                                 <ContentEditable html={this.state.html} onChange={this.handleChange} />
 
                                 <div className="t_option">
-                                    <a className="t_gif" href="#"><img src={require('./../../images/messageboard/face/bba_thumb.gif')} alt="表情" width="22" height="22" /></a>
-                                    <a className="t_send" href="#">发送</a>
+                                    <a className="t_gif" href="javascript:;"><img src={require('./../../images/messageboard/face/bba_thumb.gif')} alt="表情" width="22" height="22" /></a>
+                                    <a className="t_send" href="javascript:;">发送</a>
 
                                     <div className="t_facebox ">
                                         <ul>
