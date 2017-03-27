@@ -45,6 +45,7 @@ var MessageBoardContainer = React.createClass({
             },
 
             componentDidMount: function() {
+                var self = this;
                 //触发表情包的显示和隐藏
                 $(".t_gif").click(function() {
                     $(".t_facebox").toggle(500);
@@ -59,7 +60,7 @@ var MessageBoardContainer = React.createClass({
 
                 //点击发送按钮
                 $(".t_send").click(function() {
-                    if(this.state.count < 3) {
+                    if(self.state.count < 3) {
                     var contant = $(".t_contant").text().trim() != ""? true : false;
                     var img = $(".t_contant").find("img").html() != null ? true : false;
 
@@ -73,7 +74,7 @@ var MessageBoardContainer = React.createClass({
                                 "</div>"
                             );
                             $(".t_contant").text("");
-                            this.setState({count: this.state.count+1});
+                            self.setState({count: self.state.count+1});
                     } else {
                         alert("内容不能为空哦，请重新输入");
                         $(".t_contant").focus();
