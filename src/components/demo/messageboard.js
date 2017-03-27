@@ -61,25 +61,27 @@ var MessageBoardContainer = React.createClass({
                 //点击发送按钮
                 $(".t_send").click(function() {
                     if(self.state.count < 3) {
-                    var contant = $(".t_contant").text().trim() != ""? true : false;
-                    var img = $(".t_contant").find("img").html() != null ? true : false;
+                        var contant = $(".t_contant").text().trim() != ""? true : false;
+                        var img = $(".t_contant").find("img").html() != null ? true : false;
 
-                    if (contant || img) {
-                        var headImgUrl = require('./../../images/messageboard/D.jpg');
-                            $(".time_talk").prepend(
-                                "<div class='talk_box animated bounceIn'>" +
-                                    "<div class='talk_head'><img src='"+headImgUrl+"' width='66' height='66'></div>" +
-                                    "<div class='talk_icon'></div>" +
-                                    "<div class='talk_message'>" + $(".t_contant").html() + "</div>" +
-                                "</div>"
-                            );
-                            $(".t_contant").text("");
-                            self.setState({count: self.state.count+1});
+                        if (contant || img) {
+                            var headImgUrl = require('./../../images/messageboard/D.jpg');
+                                $(".time_talk").prepend(
+                                    "<div class='talk_box animated bounceIn'>" +
+                                        "<div class='talk_head'><img src='"+headImgUrl+"' width='66' height='66'></div>" +
+                                        "<div class='talk_icon'></div>" +
+                                        "<div class='talk_message'>" + $(".t_contant").html() + "</div>" +
+                                    "</div>"
+                                );
+                                $(".t_contant").text("");
+                                self.setState({count: self.state.count+1});
+                        } else {
+                            alert("内容不能为空哦，请重新输入");
+                            $(".t_contant").focus();
+                            return;
+                        }
                     } else {
-                        alert("内容不能为空哦，请重新输入");
-                        $(".t_contant").focus();
-                        return;
-                    }
+                        alert("留言次数已经用完咯~");
                     }
                 });
             },

@@ -139,6 +139,9 @@ var Gallery = React.createClass({
                     case 5:
                         path = "/ball";
                         break;
+                    case 6:
+                        path = null;
+                        break;
                 }
                 if (path) {
                     hashHistory.push(path)
