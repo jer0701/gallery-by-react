@@ -1,6 +1,6 @@
 # gallery-by-react
-a photo gallery project based on react
-基于ReactJS构架的图片画廊应用
+
+
 
 ## 项目搭建
 
