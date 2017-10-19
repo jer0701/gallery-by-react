@@ -1,5 +1,5 @@
 # gallery-by-react
-
+此项目是根据慕课网学习React而来
 
 
 ## 项目搭建
